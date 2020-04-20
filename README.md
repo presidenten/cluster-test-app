@@ -11,6 +11,8 @@ Features:
 Environment flags:
 ------------------
 - `mongodb`: url to mongodb, app mocks db if `mongodb=undefined`
+- `mongodb_user`: mongodb user
+- `mongodb_password`: mongodb password
 - `basepath`: basepath to append to all rest-endpoints
 - `port`: port for internal web server
 
@@ -35,6 +37,8 @@ Local test:
   docker-compose up
   ```
 
+- Wait until the test container prints `DB connected`.
+
 - Connect with some browsers to http://localhost:8080/test
   - Check that `time` is being updated every second and that `Total connections so far` is being updated.
 
@@ -46,4 +50,9 @@ Local test:
   - The container should report on currently active connections
   - Close each browser before the 360s timeout, and the server should shut down gracefully.
   - Close docker-compose with `ctrl + c`
+
+
+Attributions:
+-------------
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 

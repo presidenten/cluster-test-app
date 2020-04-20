@@ -19,10 +19,14 @@ module.exports = {
   init() {
     if (process.env.mongodb) {
       console.log('connecting to', `mongodb://${process.env.mongodb}/statistics`);
-      mongoose.connect(`mongodb://${process.env.mongodb}/statistics`, {useNewUrlParser: true, useUnifiedTopology: true});
+      mongoose.connect(`mongodb://${process.env.mongodb_user}:${process.env.mongodb_password}@${process.env.mongodb}/statistics`, {useNewUrlParser: true, useUnifiedTopology: true});
       db = mongoose.connection;
       db.once('open', async () => {
-        console.info('DB connected');
+        console.info('');
+        console.info('--------------');
+        console.info(' DB connected ');
+        console.info('--------------');
+        console.info('');
         statisticsSchema = new mongoose.Schema({
           _id: Number,
           totalConnections: Number,
