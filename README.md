@@ -45,3 +45,5 @@ Local test:
   - The health check should go from `200 OK` to `503 - Unavailable` - http://localhost:8080/test/health
   - The container should report on currently active connections
   - Close each browser before the 360s timeout, and the server should shut down gracefully.
+  - Close docker-compose with `ctrl + c`
+
