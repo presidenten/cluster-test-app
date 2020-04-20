@@ -1,7 +1,7 @@
 FROM node:13.13.0-alpine
 
-ARG UID=9999
-ARG GID=9999
+ARG UID=1001
+ARG GID=1001
 ARG PROXY=''
 
 ENV http_proxy ${PROXY}

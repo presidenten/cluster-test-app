@@ -6,8 +6,8 @@ REPO=presidenten
 IMAGE_NAME=cluster-test-app
 IMAGE_VERSION=1.0.1
 
-USER_UID=9999
-USER_GID=9999
+USER_UID=1001
+USER_GID=1001
 PROXY=
 
 docker image build -t ${IMAGE_NAME}:${IMAGE_VERSION} \
