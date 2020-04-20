@@ -68,10 +68,14 @@ module.exports = {
   close() {
     return new Promise((resolve) => {
       console.log('Closing mongodb connection');
-      db.close(false, () => {
-        console.log('MongoDb connection closed');
+      if (db) {
+        db.close(false, () => {
+          console.log('MongoDb connection closed');
+          resolve();
+        });
+      } else {
         resolve();
-      });
+      }
     });
   },
 }
