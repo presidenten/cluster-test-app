@@ -24,6 +24,11 @@ Rest endpoints:
 
 Local test:
 -----------
+- Build
+ ```bash
+  ./build.sh
+ ```
+
 - Start servers:
   ```bash
   cd test
