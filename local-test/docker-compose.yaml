@@ -14,7 +14,7 @@ services:
       - 27017:27017
 
   test:
-    image: cluster-test-app:1.0.2
+    image: cluster-test-app:1.0.3
     environment:
       mongodb: mongodb
       mongodb_user: user
