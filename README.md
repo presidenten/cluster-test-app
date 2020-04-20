@@ -31,7 +31,7 @@ Local test:
 
 - Start servers:
   ```bash
-  cd test
+  cd local-test
   docker-compose up
   ```
 

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const port = process.env.PORT || 8080;
-const basepath = process.env.basepath || ''
+const basepath = process.env.basepath || '';
 const server = app.listen(port);
 let isReady = () => db.ready && wss.ready;
 
@@ -46,6 +46,7 @@ process.on('SIGTERM', () => {
   console.info('\n-- Received SIGTERM --\n');
   wss.prepareClose();
   console.info('Current connections:', wss.currentConnections);
+
   const waitForNoConnections = setInterval(async () => {
     if (wss.currentConnections === 0) {
       clearInterval(waitForNoConnections);
