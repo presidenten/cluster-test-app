@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo:4.2.5-bionic
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    networks:
+      - backend
+
+  test:
+    image: cluster-test:1.0.0-1
+    environment:
+      mongodb: mongodb
+      basepath: /test
+    networks:
+      - backend
+      - proxy
+    depends_on:
+      - mongodb
+
+  proxy:
+    image: nginx:1.15.5-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d:ro
+    networks:
+      - proxy
+    depends_on:
+      - mongodb
+      - test
+
+
+networks:
+  backend:
+  proxy:

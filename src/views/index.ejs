@@ -1,0 +1,49 @@
+<h1>
+  Test client
+</h1>
+
+<h3>
+  Total connections so far: <%= connections %>
+</h3>
+<div>
+  Server sent time over websocket: <p id="time" style="display: inline">--:--:--</p>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var loc = window.location, rel_uri;
+    const time = document.getElementById('time');
+
+    if (loc.protocol === "https:") {
+      rel_uri = "wss:";
+    } else {
+      rel_uri = "ws:";
+    }
+    rel_uri += "//" + loc.host;
+    rel_uri += loc.pathname + "/to/ws";
+    var ws = new WebSocket(rel_uri);
+
+    ws.onopen = function () {
+      console.log('Websocket is connected...')
+      ws.send('Connected')
+    }
+
+    ws.onmessage = function (ev) {
+      time.innerText = ev.data;
+    }
+
+    ws.onclose = function () {
+      document.body.style='background: #ccc';
+      time.innerText = 'Websocket closed...';
+    }
+
+    const ping = setInterval(function() {
+      ws.send('test...');
+    }, 1000);
+
+    window.onbeforeunload = function() {
+      websocket.onclose = function () {};
+      websocket.close();
+      clearInterval(ping);
+    };
+  });
+</script>
