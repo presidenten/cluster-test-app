@@ -10,7 +10,7 @@ services:
       - backend
 
   test:
-    image: cluster-test-app:1.0.0-1
+    image: cluster-test-app:1.0.0
     environment:
       mongodb: mongodb
       basepath: /test
