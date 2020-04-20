@@ -25,6 +25,7 @@ app.get(basepath + '/', function (req, res) {
   if (isReady()) {
     res.status(STATUS.OK).render(__dirname + '/views/index.ejs', {
       connections: db.totalConnections + 1,
+      version: require('./current-version.json').version,
     });
   }
   else {

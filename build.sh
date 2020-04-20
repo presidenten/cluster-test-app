@@ -4,7 +4,7 @@ set -e
 
 REPO=presidenten
 IMAGE_NAME=cluster-test-app
-IMAGE_VERSION=1.0.0
+IMAGE_VERSION=1.0.1
 
 USER_UID=9999
 USER_GID=9999

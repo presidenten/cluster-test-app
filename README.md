@@ -40,7 +40,7 @@ Local test:
 
 - Keep browsers open and close server with grace period to check that SIGTERM is handled correctly
   ```bash
-    docker stop $(docker ps | grep cluster-test | grep -Po '^...') --time 360
+    ./send-sigterm.sh
   ```
   - The health check should go from `200 OK` to `503 - Unavailable` - http://localhost:8080/test/health
   - The container should report on currently active connections
