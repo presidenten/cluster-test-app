@@ -1,5 +1,5 @@
-Simple test application
-=======================
+Cluster-test-app
+================
 
 Features:
 ---------
