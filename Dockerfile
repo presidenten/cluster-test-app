@@ -1,18 +1,18 @@
-ARG NODE_VERSION
+FROM node:13.13.0-alpine
 
-FROM node:${NODE_VERSION}
+ARG UID=9999
+ARG GID=9999
+ARG PROXY=''
 
 ENV http_proxy ${PROXY}
 ENV https_proxy ${PROXY}
+
 ENV mongodb ''
 
 COPY src /app
 
 # Setup user
 WORKDIR /app
-
-ARG UID=9999
-ARG GID=9999
 
 RUN yarn && \
     addgroup -S -g ${GID} user && \

@@ -6,8 +6,6 @@ REPO=presidenten
 IMAGE_NAME=cluster-test-app
 IMAGE_VERSION=1.0.0
 
-
-NODE_VERSION=13.13.0-alpine
 USER_UID=9999
 USER_GID=9999
 PROXY=
