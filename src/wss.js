@@ -15,7 +15,7 @@ module.exports = {
   },
 
   init(server) {
-    wss = new WebSocketServer({ server });
+    wss = new WebSocketServer({ server, perMessageDeflate: false });
 
     wss.on('listening', () => {
       websocketIsReady = true;
