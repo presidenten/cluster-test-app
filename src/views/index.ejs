@@ -3,7 +3,7 @@
 </h1>
 
 <h3>
-  Total connections so far: <%= connections %>
+  Total connections so far: <p id="connections" style="display: inline;"><%= connections %></p>
 </h3>
 <div>
   Server sent time over websocket: <p id="time" style="display: inline">--:--:--</p>
@@ -12,6 +12,7 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     var loc = window.location, rel_uri;
     const time = document.getElementById('time');
+    const connections = document.getElementById('connections');
 
     if (loc.protocol === "https:") {
       rel_uri = "wss:";
@@ -28,7 +29,9 @@
     }
 
     ws.onmessage = function (ev) {
-      time.innerText = ev.data;
+      const data = JSON.parse(ev.data);
+      time.innerText = data.time;
+      connections.innerText = data.totalConnections;
     }
 
     ws.onclose = function () {

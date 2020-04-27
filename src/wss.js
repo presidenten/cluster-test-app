@@ -33,7 +33,10 @@ module.exports = {
 
       setInterval(() => {
         if ([...wss.clients].length > 0) {
-          ws.send(`${new Date().toISOString().replace(/^[^T]+T/g, '').slice (0,-5)}`);
+          ws.send(JSON.stringify({
+            time: `${new Date().toISOString().replace(/^[^T]+T/g, '').slice (0,-5)}`,
+            totalConnections: db.totalConnections,
+          }));
         }
       }, 1000);
     });
